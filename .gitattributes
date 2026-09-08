@@ -1,0 +1,17 @@
+# Le projet a été développé sous Windows. Sans cette normalisation, les fichiers texte
+# partent en CRLF dans le dépôt, et `scripts/run_full_pipeline.sh` cloné sous Linux ou
+# macOS échoue avec `bad interpreter: /usr/bin/env bash^M` — une erreur qui ne dit rien
+# de sa cause.
+* text=auto eol=lf
+
+# Le script d'entrée doit rester en LF quoi qu'il arrive.
+*.sh text eol=lf
+
+# Binaires : aucune conversion, sous peine de corruption silencieuse des poids.
+*.pt binary
+*.npy binary
+*.npz binary
+*.png binary
+*.jpg binary
+*.docx binary
+*.pdf binary

@@ -1,0 +1,40 @@
+_base_: base.yaml
+
+# ---------------------------------------------------------------------------------------
+# Palier 2 — entraînement final 128×128, 60 000 pas.
+#
+# §7.3 : « Durée estimée 3 à 5 h — À MESURER, ne pas reprendre cette estimation telle
+# quelle. » Le débit réel est journalisé sous `perf/steps_per_second` dans TensorBoard et
+# consigné dans `runs/final/train_summary.json`. C'est ce chiffre-là qui va au rapport.
+#
+# La résolution native est gelée à 128 (§12, dernier risque). Le passage en 512 est un
+# post-traitement (F-S5), pas un changement de modèle.
+# ---------------------------------------------------------------------------------------
+name: final
+
+data:
+  image_size: 128
+  latent_size: 16
+
+model:
+  latent_size: 16
+  depth: 8
+  hidden_size: 256
+  num_heads: 4
+
+train:
+  steps: 60000
+  batch_size: 128
+  ckpt_every: 5000
+  sample_every: 2000
+  log_every: 100
+  out_dir: runs/final
+
+sample:
+  # Question ouverte n°4 tranchée par le balayage F-E6 : w = 4 minimise le FID (37.1)
+  # tout en atteignant 99 % de précision de genre et une MAE d'âge de 4.77 ans.
+  # Au-delà, le réalisme se dégrade nettement pour un gain d'obéissance marginal.
+  guidance: 4.0
+
+eval:
+  out_dir: results/final

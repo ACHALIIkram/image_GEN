@@ -1,0 +1,33 @@
+_base_: final_v3.yaml
+
+# ---------------------------------------------------------------------------------------
+# Évaluation d'itération — ~45 min au lieu de ~5 h.
+#
+# Destinée à décider vite entre deux modèles pendant le développement. Le chiffre qui va
+# dans le rapport doit venir de `final_v3.yaml`, pas d'ici : les effectifs réduits biaisent
+# le FID vers le haut et rendent les valeurs non comparables à celles publiées.
+#
+# Les quatre leviers, du plus au moins rentable :
+#   num_steps 50 → 25       ×2   — mesuré : 25 et 250 pas donnent la même structure
+#   FID 10000 → 5000        ×1.4 — biais accru mais identique d'un modèle à l'autre
+#   balayage w : 7 → 4 pts  ×1.3 — on perd les extrêmes, rarement décisifs
+#   sous-groupes 300 → 100  ×1.4 — cellules plus bruitées
+#
+# RÈGLE : ne comparer que des mesures produites par CE fichier entre elles. Le FID est
+# fortement biaisé par la taille des échantillons — c'est le piège qui a failli faire
+# conclure trois fois l'inverse de la vérité dans ce projet.
+# ---------------------------------------------------------------------------------------
+name: eval_fast
+
+sample:
+  num_steps: 25
+
+eval:
+  fid_num_samples: 5000
+  attr_num_samples: 1000
+  leakage_num_seeds: 50
+  diversity_num_pairs: 250
+  subgroup_samples_per_cell: 100
+  w_sweep: [1.0, 2.0, 3.0, 4.0]
+  memorization_num_samples: 250
+  out_dir: results/final_v3_fast

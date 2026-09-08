@@ -1,0 +1,52 @@
+_base_: final_v2.yaml
+
+# ---------------------------------------------------------------------------------------
+# Palier 3 — reprise du palier v2 sur jeu filtré en pose, +100 000 pas.
+#
+# Deux constats mesurés motivent cette reprise, et un seul geste les traite.
+#
+# 1. Le modèle apprenait encore à l'arrêt. Perte moyennée par tranche de 20 k pas :
+#    0.3004 → 0.2751 → 0.2680 → 0.2640 → 0.2613 → 0.2589. Aucun plateau. Arrêter à
+#    120 000 pas était un choix d'horaire, pas une observation de convergence.
+#
+# 2. Le point faible est la POSE, pas l'âge ni le teint. À effectif de référence
+#    strictement égal (120 contre 120, moyenné sur 5 tirages), en comparant des
+#    générations à des images réelles de MÊME pose :
+#        frontal  (yaw < 0.15) : FID  98.5 ± 2.1
+#        tourné   (yaw > 0.25) : FID 126.7 ± 2.6
+#    Deux hypothèses concurrentes ont été testées et écartées avant celle-ci. L'âge :
+#    FID 85.0 à 28 ans contre 80.7 à 65 ans, à référence égale — aucun écart, alors même
+#    que les 58-70 ans ne pèsent que 4.5 % du jeu. Le VAE : les montures de lunettes fines
+#    survivent à l'aller-retour en latent, le plafond n'est pas là.
+#
+#    ATTENTION à un piège rencontré trois fois dans ce projet : un premier calcul donnait
+#    68 contre 153, mais avec 300 images de référence d'un côté et 67 de l'autre. Le FID
+#    est fortement biaisé vers le haut quand la référence est petite. L'écart réel est de
+#    +29 %, pas de +125 %. Toute comparaison de FID entre sous-groupes DOIT imposer le
+#    même effectif des deux côtés.
+#
+# Le filtre de pose retire 3 248 images (5.0 %). Le jeu passe de 59 705 à 54 356 images
+# sources. On ne retire pas des personnes mais des poses : le rapport de filtrage
+# journalise la composition par genre, âge et origine avant et après, pour que ce soit
+# vérifiable et non supposé.
+#
+# La reprise part de runs/final_v2/ckpt_final.pt (pas 120 000) et va jusqu'à 220 000.
+# Le modèle conserve tout ce qu'il a appris ; seule la distribution des données change.
+# `steps` est un compteur ABSOLU, pas un nombre de pas supplémentaires.
+# ---------------------------------------------------------------------------------------
+name: final_v3
+
+data:
+  # Cache distinct : le palier v2 doit rester rejouable à l'identique, ses chiffres sont
+  # déjà publiés dans results/final_v2/.
+  latents_file: posed_latents.npy
+  labels_file: posed_labels.npy
+  age_bounds_file: posed_age_bounds.npy
+  meta_file: posed_dataset_meta.json
+
+train:
+  steps: 220000
+  out_dir: runs/final_v3
+
+eval:
+  out_dir: results/final_v3

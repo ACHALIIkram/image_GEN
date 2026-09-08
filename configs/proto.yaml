@@ -1,0 +1,36 @@
+_base_: base.yaml
+
+# ---------------------------------------------------------------------------------------
+# Palier 1 — prototype 64×64, ~1 h. Jalon de la semaine 2.
+#
+# Objectif : vérifier que le conditionnement *pilote* réellement la génération, avant
+# d'engager les heures du palier final. Le test qui compte est la planche de balayage
+# (`sample.py --sweep`) : les trois lignes doivent être visiblement différentes.
+# ---------------------------------------------------------------------------------------
+name: proto
+
+data:
+  image_size: 64
+  latent_size: 8
+
+model:
+  latent_size: 8
+  depth: 8
+  hidden_size: 256
+  num_heads: 4
+
+train:
+  steps: 20000
+  batch_size: 128
+  ckpt_every: 2500
+  sample_every: 1000
+  log_every: 100
+  out_dir: runs/proto
+
+eval:
+  fid_num_samples: 5000
+  attr_num_samples: 1000
+  leakage_num_seeds: 50
+  diversity_num_pairs: 200
+  subgroup_samples_per_cell: 100
+  out_dir: results/proto

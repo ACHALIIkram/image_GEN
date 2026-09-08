@@ -1,0 +1,46 @@
+# Environnements
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Artefacts lourds — reproductibles depuis configs/ + une graine (NF-6)
+# runs/ contient les checkpoints d'entraînement : 528 Mo pièce, quatre copies des
+# paramètres (poids, EMA, deux moments d'AdamW). Les poids nécessaires à la GÉNÉRATION
+# en sont extraits par scripts/export_weights.py et vivent dans poids/, versionné.
+artifacts/
+runs/
+samples/
+weights/
+data/
+
+# Poids distribués — VERSIONNÉS, contrairement à tout ce qui précède.
+# Sans eux le dépôt ne se teste pas : `git clone` puis `python app.py` doit suffire.
+!poids/
+!poids/*.pt
+!poids/*.json
+
+# Résultats : le JSON et les figures sont versionnés (ils vont au rapport),
+# mais pas les dossiers de statistiques FID régénérables.
+results/**/fid_ref/
+!results/**/*.json
+!results/**/figures/*.png
+
+# Sorties d'expériences abandonnées, conservées sur disque mais hors dépôt :
+# l'entraînement lancé par erreur sur la mauvaise architecture (10 M au lieu de 33 M),
+# et la mesure d'avant la correction de l'instrument d'ITA. Ces deux épisodes sont
+# racontés dans le rapport ; leurs fichiers bruts n'y ajoutent rien.
+results/final_v4_fast_WRONG_ARCH/
+*.json.bak
+
+# Caches de bibliothèques
+.cache/
+*.egg-info/
+
+# Poids téléchargés au vol par clean-fid dans le dossier courant
+inception-*.pt
+
+# Journaux d'exécution : volumineux, propres à une machine, sans valeur de relecture
+logs/
+logs_pipeline.txt

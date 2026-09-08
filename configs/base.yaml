@@ -1,0 +1,92 @@
+# Réglages communs aux trois paliers. Les fichiers smoke/proto/final n'écrasent que ce
+# qui les distingue, pour que les différences entre paliers soient lisibles d'un coup d'œil.
+name: base
+seed: 1234
+device: cuda
+
+data:
+  root: data/fairface
+  hf_dataset: HuggingFaceM4/FairFace
+  hf_config: "0.25"
+  age_min: 18.0
+  age_max: 70.0
+  # Voir `resolve_age_bins` : la tranche 10-19 est rejetée en entier plutôt que rognée
+  # à [18, 20). La plage effectivement couverte devient donc [20, 70).
+  drop_partial_age_bins: true
+  hflip: true
+  vae_id: stabilityai/sd-vae-ft-mse
+  vae_scale: 0.18215
+  cache_dir: artifacts
+  encode_batch_size: 64
+  num_workers: 4
+  ita_use_mediapipe: true
+  ita_min_pixels: 200
+
+model:
+  in_channels: 4
+  patch_size: 2
+  num_heads: 4
+  mlp_ratio: 4.0
+  fourier_num_freqs: 64
+  fourier_max_freq: 64.0
+  dropout: 0.0
+  age_norm_max: 70.0
+  ita_norm_offset: 60.0
+  ita_norm_scale: 120.0
+
+train:
+  lr: 1.0e-4
+  weight_decay: 0.0
+  betas: [0.9, 0.999]
+  grad_clip: 1.0
+  ema_decay: 0.9999
+  ema_start: 1000
+  cond_dropout: 0.1
+  independent_cond_dropout: false
+  num_train_timesteps: 1000
+  beta_schedule: squaredcos_cap_v2
+  prediction_type: epsilon
+  precision: bf16
+  fused_adam: true
+  keep_last_ckpts: 3
+
+sample:
+  num_steps: 25
+  eta: 0.0
+  guidance: 3.0
+  restore: false
+  restore_size: 512
+  codeformer_fidelity: 0.7
+
+eval:
+  fid_num_samples: 10000
+  attr_num_samples: 2000
+  leakage_num_seeds: 100
+  diversity_num_pairs: 500
+  subgroup_samples_per_cell: 300
+  w_sweep: [1.0, 2.0, 3.0, 4.0, 6.0, 8.0, 10.0]
+  memorization_num_samples: 500
+  age_bins: [20.0, 33.0, 46.0, 58.0, 70.0]
+  # Bins de teint alignés sur les catégories dermatologiques (voir ita.ITA_CATEGORIES) :
+  # brown / tan / intermediate / light+.
+  ita_bins: [-40.0, 10.0, 28.0, 45.0, 70.0]
+  real_stats_dir: artifacts/fid_ref
+  oracle_ckpt: runs/oracle/oracle_best.pt
+  batch_size: 64
+  out_dir: results
+
+oracle:
+  image_size: 128
+  pretrained: true
+  epochs: 12
+  batch_size: 128
+  lr: 3.0e-4
+  weight_decay: 1.0e-4
+  label_smoothing: 0.05
+  huber_delta: 5.0
+  num_workers: 4
+  out_dir: runs/oracle
+  age_mean: 40.0
+  age_std: 15.0
+  ita_mean: 25.0
+  ita_std: 25.0

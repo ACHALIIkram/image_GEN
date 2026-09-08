@@ -1,0 +1,41 @@
+_base_: base.yaml
+
+# ---------------------------------------------------------------------------------------
+# Palier 0 — test de fumée, ~15 minutes.
+#
+# Obligatoire avant tout entraînement long (§12, risque n°1 : « l'entraînement ne
+# converge pas — bug de conditionnement », impact critique). Ce qu'on attend à la fin :
+# une loss qui descend nettement sous 1.0, et des formes de visage identifiables.
+# Ce qu'on n'attend PAS : de la qualité. 4 tokens ne peuvent pas porter un visage.
+# ---------------------------------------------------------------------------------------
+name: smoke
+
+data:
+  image_size: 32
+  latent_size: 4
+  encode_batch_size: 128
+
+model:
+  latent_size: 4
+  depth: 6
+  hidden_size: 192
+  num_heads: 4
+
+train:
+  steps: 3000
+  batch_size: 128
+  ema_start: 200
+  ckpt_every: 1000
+  sample_every: 500
+  log_every: 50
+  out_dir: runs/smoke
+
+eval:
+  fid_num_samples: 1000
+  attr_num_samples: 500
+  leakage_num_seeds: 20
+  diversity_num_pairs: 50
+  subgroup_samples_per_cell: 40
+  memorization_num_samples: 50
+  w_sweep: [1.0, 3.0, 6.0]
+  out_dir: results/smoke

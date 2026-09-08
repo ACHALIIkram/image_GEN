@@ -1,0 +1,71 @@
+_base_: base.yaml
+
+# ---------------------------------------------------------------------------------------
+# Palier 2bis — correction du sous-dimensionnement du palier `final`.
+#
+# Constat mesuré sur `runs/final` : 60 000 pas exécutés en 0.84 h avec un pic de 1.09 Go
+# de VRAM, pour un budget annoncé de 3 à 5 h sur 8 Go. Le modèle n'utilisait donc ni le
+# temps ni la mémoire disponibles. Les échantillons présentaient une incohérence
+# structurelle — et non un flou au sens strict : la variance laplacienne des générations
+# (287) dépassait celle des images réelles (176). Le détail était produit, mal placé.
+#
+# Diagnostic. `patch_size: 2` sur un latent 16×16 ne laisse que 64 jetons pour un visage
+# entier, soit un bloc de 16×16 pixels par jeton — un œil tient dans un seul jeton. Le
+# papier DiT établit que la taille de patch domine le FID devant le nombre de paramètres ;
+# c'est donc elle qu'on corrige en premier.
+#
+# Ce qui change par rapport à `final.yaml`, et pourquoi :
+#   patch_size 2 → 1     64 → 256 jetons. Chaque jeton couvre 8×8 pixels au lieu de 16×16.
+#   depth 8 → 12         profondeur DiT-S de référence.
+#   hidden 256 → 384     largeur DiT-S de référence. 10.0 M → 33.0 M paramètres.
+#   batch 128 → 64       nécessaire : à batch 128 le pic atteint 8.02 Go et le débit
+#                        s'effondre à 0.92 pas/s par débordement. À 64 : 4.25 Go, 4.62
+#                        pas/s (mesuré sur RTX 4060 Laptop).
+#   steps 60k → 120000   compense la moitié de batch et va au-delà : 7.7 M échantillons vus
+#                        contre 7.7 M précédemment, à capacité et résolution accrues.
+#                        Coût mesuré : ≈ 7.2 h.
+#
+# Le cache de latents est distinct de celui du palier `final` : le jeu est filtré (F-D9) et
+# l'évaluation déjà publiée doit rester reproductible à l'identique.
+# ---------------------------------------------------------------------------------------
+name: final_v2
+
+data:
+  image_size: 128
+  latent_size: 16
+  # Cache dédié. Produit par :
+  #   python -m facedit.data.filter_faces --config configs/final_v2.yaml
+  #   python -m facedit.data.encode --config configs/final_v2.yaml \
+  #       --keep-mask artifacts/train_128_keep.npy
+  latents_file: filtered_latents.npy
+  labels_file: filtered_labels.npy
+  age_bounds_file: filtered_age_bounds.npy
+  meta_file: filtered_dataset_meta.json
+
+model:
+  latent_size: 16
+  # Le levier principal. Voir l'en-tête : 64 jetons ne suffisent pas à composer un visage.
+  patch_size: 1
+  depth: 12
+  hidden_size: 384
+  num_heads: 6
+
+train:
+  steps: 120000
+  batch_size: 64
+  # 2500 et non 10000 : à 1.9 pas/s (régime bridé sur batterie), 10000 pas représentent
+  # 1 h 30 de travail exposée à une coupure. Le coût d'un checkpoint est de ~160 Mo et
+  # deux secondes ; celui d'une perte, une heure et demie de GPU.
+  ckpt_every: 2500
+  sample_every: 5000
+  log_every: 100
+  out_dir: runs/final_v2
+
+sample:
+  # Volontairement hérité de base.yaml (w = 3). La valeur w = 4 du palier `final` était
+  # optimale pour ce modèle-là ; elle doit être réétablie par un nouveau balayage F-E6,
+  # pas recopiée. Un modèle plus capable a en général besoin de moins de guidage.
+  num_steps: 50
+
+eval:
+  out_dir: results/final_v2

@@ -1,0 +1,46 @@
+_base_: final_v3.yaml
+
+# ---------------------------------------------------------------------------------------
+# Palier 4 — données ALIGNÉES, entraînement DEPUIS ZÉRO.
+#
+# Deux changements, chacun motivé par une mesure.
+#
+# 1. ALIGNEMENT (F-D10). FairFace n'est pas aligné, contrairement à FFHQ ou CelebA-HQ.
+#    Mesuré sur 1 410 vignettes : l'œil se déplace d'un écart-type de 7.1 px alors qu'une
+#    case du latent 16×16 en vaut 8. Le modèle apprenait donc OÙ poser un visage avant
+#    d'apprendre à quoi il ressemble. Après similitude sur les deux yeux :
+#        position œil x   7.1 → 3.3 px       écart oculaire   5.9 → 2.6 px
+#        position œil y   4.8 → 3.7 px       roulis           5.9 → 3.5°
+#    Divisé par deux, pas annulé : le résidu est la répétabilité de MediaPipe, pas une
+#    erreur de la transformation. On garde ainsi le bénéfice qui fait la qualité de FFHQ
+#    sans en adopter les défauts pour ce projet — absence d'étiquettes d'âge (qui
+#    imposerait des pseudo-étiquettes issues de notre propre oracle, donc une évaluation
+#    circulaire) et déséquilibre démographique, alors que FairFace couvre 7 groupes entre
+#    11.6 % et 21.0 % et un ITA d'écart-type 38.9° de −83.5° à +83.5°.
+#
+# 2. DEPUIS ZÉRO, pas une reprise. Le palier v3 avait été repris depuis v2, qui avait
+#    appris les poses tournées pendant 120 000 pas. Résultat mesuré sur 600 générations :
+#    le taux de visages tournés n'est passé que de 7.3 % à 4.0 %, plus 4.5 % d'images où
+#    le détecteur ne trouve aucun visage. Retirer un mode des données ne le retire pas
+#    d'un modèle déjà entraîné ; 85 000 pas de spécialisation l'atténuent sans l'effacer.
+#
+# Budget : 120 000 pas, EXACTEMENT comme le palier v2 depuis zéro. Ce n'est pas un chiffre
+# rond de confort — c'est ce qui rend la comparaison v2/v4 interprétable : même
+# architecture, même nombre de pas, même budget. Seuls l'alignement et le filtre de pose
+# diffèrent. Toute autre valeur mélangerait « meilleures données » et « plus d'entraînement ».
+# ---------------------------------------------------------------------------------------
+name: final_v4
+
+data:
+  align_faces: true
+  latents_file: aligned_latents.npy
+  labels_file: aligned_labels.npy
+  age_bounds_file: aligned_age_bounds.npy
+  meta_file: aligned_dataset_meta.json
+
+train:
+  steps: 120000
+  out_dir: runs/final_v4
+
+eval:
+  out_dir: results/final_v4
