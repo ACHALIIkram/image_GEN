@@ -9,11 +9,14 @@ __pycache__/
 # runs/ contient les checkpoints d'entraînement : 528 Mo pièce, quatre copies des
 # paramètres (poids, EMA, deux moments d'AdamW). Les poids nécessaires à la GÉNÉRATION
 # en sont extraits par scripts/export_weights.py et vivent dans poids/, versionné.
-artifacts/
-runs/
-samples/
-weights/
-data/
+# Motifs ANCRÉS par un / initial. Sans lui, `data/` exclut aussi `facedit/data/` — six
+# fichiers source, dont ita.py qui porte l'instrument de mesure du teint. Git l'applique
+# en silence : rien ne signale l'absence avant qu'un clone ne refuse de démarrer.
+/artifacts/
+/runs/
+/samples/
+/weights/
+/data/
 
 # Poids distribués — VERSIONNÉS, contrairement à tout ce qui précède.
 # Sans eux le dépôt ne se teste pas : `git clone` puis `python app.py` doit suffire.
@@ -42,5 +45,5 @@ results/final_v4_fast_WRONG_ARCH/
 inception-*.pt
 
 # Journaux d'exécution : volumineux, propres à une machine, sans valeur de relecture
-logs/
-logs_pipeline.txt
+/logs/
+/logs_pipeline.txt
