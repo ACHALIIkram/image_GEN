@@ -1,0 +1,934 @@
+{
+  "role": "F-O4 — barre d'erreur de toutes les mesures d'attributs ultérieures",
+  "subset_limit": null,
+  "is_reference_oracle": true,
+  "best_epoch": 11,
+  "metrics": {
+    "n": 7546,
+    "gender_accuracy": 0.960376358335542,
+    "gender_mean_confidence": 0.9602339863777161,
+    "age_mae": 5.743075370788574,
+    "age_bias": -0.30349746346473694,
+    "ita_mae": 5.082616806030273,
+    "ita_bias": 0.4890250563621521,
+    "ita_pearson_r": 0.9741843970517604,
+    "age_pearson_r": 0.7828860055054515,
+    "by_perceived_race": {
+      "East Asian": {
+        "n": 1054,
+        "gender_accuracy": 0.9497153700189753,
+        "age_mae": 5.671995639801025,
+        "ita_mae": 5.873579502105713
+      },
+      "Indian": {
+        "n": 1057,
+        "gender_accuracy": 0.9801324503311258,
+        "age_mae": 5.894190311431885,
+        "ita_mae": 4.403705596923828
+      },
+      "Black": {
+        "n": 941,
+        "gender_accuracy": 0.9171094580233794,
+        "age_mae": 6.324131011962891,
+        "ita_mae": 5.2051825523376465
+      },
+      "White": {
+        "n": 1522,
+        "gender_accuracy": 0.9632063074901446,
+        "age_mae": 5.623737335205078,
+        "ita_mae": 5.546106338500977
+      },
+      "Middle Eastern": {
+        "n": 908,
+        "gender_accuracy": 0.9801762114537445,
+        "age_mae": 5.462164878845215,
+        "ita_mae": 4.662187576293945
+      },
+      "Latino_Hispanic": {
+        "n": 1160,
+        "gender_accuracy": 0.9741379310344828,
+        "age_mae": 5.759885787963867,
+        "ita_mae": 4.6884074211120605
+      },
+      "Southeast Asian": {
+        "n": 904,
+        "gender_accuracy": 0.952433628318584,
+        "age_mae": 5.505923271179199,
+        "ita_mae": 4.9744367599487305
+      }
+    },
+    "by_gender": {
+      "Male": {
+        "n": 3985,
+        "gender_accuracy": 0.9588456712672522,
+        "age_mae": 5.84173059463501,
+        "ita_mae": 5.266350746154785
+      },
+      "Female": {
+        "n": 3561,
+        "gender_accuracy": 0.962089300758214,
+        "age_mae": 5.632673263549805,
+        "ita_mae": 4.877006530761719
+      }
+    },
+    "epoch": 11,
+    "train_loss": 0.21682764321181908
+  },
+  "history": [
+    {
+      "n": 7546,
+      "gender_accuracy": 0.924198250728863,
+      "gender_mean_confidence": 0.8980355262756348,
+      "age_mae": 6.851979732513428,
+      "age_bias": -0.904900848865509,
+      "ita_mae": 8.188454627990723,
+      "ita_bias": 0.5002621412277222,
+      "ita_pearson_r": 0.9502086482281086,
+      "age_pearson_r": 0.68218893810072,
+      "by_perceived_race": {
+        "East Asian": {
+          "n": 1054,
+          "gender_accuracy": 0.9117647058823529,
+          "age_mae": 6.8012375831604,
+          "ita_mae": 9.04828929901123
+        },
+        "Indian": {
+          "n": 1057,
+          "gender_accuracy": 0.935666982024598,
+          "age_mae": 6.9203338623046875,
+          "ita_mae": 7.384432792663574
+        },
+        "Black": {
+          "n": 941,
+          "gender_accuracy": 0.8947927736450585,
+          "age_mae": 7.0479865074157715,
+          "ita_mae": 8.452317237854004
+        },
+        "White": {
+          "n": 1522,
+          "gender_accuracy": 0.923784494086728,
+          "age_mae": 6.817235469818115,
+          "ita_mae": 8.525439262390137
+        },
+        "Middle Eastern": {
+          "n": 908,
+          "gender_accuracy": 0.9581497797356828,
+          "age_mae": 6.73753547668457,
+          "ita_mae": 7.927056789398193
+        },
+        "Latino_Hispanic": {
+          "n": 1160,
+          "gender_accuracy": 0.9379310344827586,
+          "age_mae": 6.653480529785156,
+          "ita_mae": 7.676630020141602
+        },
+        "Southeast Asian": {
+          "n": 904,
+          "gender_accuracy": 0.9048672566371682,
+          "age_mae": 7.055344104766846,
+          "ita_mae": 8.203352928161621
+        }
+      },
+      "by_gender": {
+        "Male": {
+          "n": 3985,
+          "gender_accuracy": 0.9493099121706399,
+          "age_mae": 6.858798503875732,
+          "ita_mae": 8.308338165283203
+        },
+        "Female": {
+          "n": 3561,
+          "gender_accuracy": 0.896096602078068,
+          "age_mae": 6.844348430633545,
+          "ita_mae": 8.05429744720459
+        }
+      },
+      "epoch": 1,
+      "train_loss": 0.7125596995645327
+    },
+    {
+      "n": 7546,
+      "gender_accuracy": 0.9386429896633979,
+      "gender_mean_confidence": 0.9148290157318115,
+      "age_mae": 6.906040668487549,
+      "age_bias": -3.847280979156494,
+      "ita_mae": 10.100349426269531,
+      "ita_bias": -6.337616920471191,
+      "ita_pearson_r": 0.9538083121821409,
+      "age_pearson_r": 0.7285453954951085,
+      "by_perceived_race": {
+        "East Asian": {
+          "n": 1054,
+          "gender_accuracy": 0.9184060721062619,
+          "age_mae": 6.128005027770996,
+          "ita_mae": 12.016351699829102
+        },
+        "Indian": {
+          "n": 1057,
+          "gender_accuracy": 0.956480605487228,
+          "age_mae": 7.064381122589111,
+          "ita_mae": 8.944780349731445
+        },
+        "Black": {
+          "n": 941,
+          "gender_accuracy": 0.9117959617428267,
+          "age_mae": 7.116626262664795,
+          "ita_mae": 9.267122268676758
+        },
+        "White": {
+          "n": 1522,
+          "gender_accuracy": 0.9369250985545335,
+          "age_mae": 6.944421768188477,
+          "ita_mae": 10.82393741607666
+        },
+        "Middle Eastern": {
+          "n": 908,
+          "gender_accuracy": 0.9713656387665198,
+          "age_mae": 7.036957740783691,
+          "ita_mae": 8.825380325317383
+        },
+        "Latino_Hispanic": {
+          "n": 1160,
+          "gender_accuracy": 0.9620689655172414,
+          "age_mae": 7.233479022979736,
+          "ita_mae": 9.867772102355957
+        },
+        "Southeast Asian": {
+          "n": 904,
+          "gender_accuracy": 0.9092920353982301,
+          "age_mae": 6.792552947998047,
+          "ita_mae": 10.445703506469727
+        }
+      },
+      "by_gender": {
+        "Male": {
+          "n": 3985,
+          "gender_accuracy": 0.9169385194479297,
+          "age_mae": 7.174849987030029,
+          "ita_mae": 7.84884786605835
+        },
+        "Female": {
+          "n": 3561,
+          "gender_accuracy": 0.9629317607413648,
+          "age_mae": 6.605225563049316,
+          "ita_mae": 12.619933128356934
+        }
+      },
+      "epoch": 2,
+      "train_loss": 0.42395238699831167
+    },
+    {
+      "n": 7546,
+      "gender_accuracy": 0.9452690166975881,
+      "gender_mean_confidence": 0.9275262951850891,
+      "age_mae": 6.283710956573486,
+      "age_bias": -0.3307548463344574,
+      "ita_mae": 7.556065559387207,
+      "ita_bias": 4.585963249206543,
+      "ita_pearson_r": 0.9656299172052492,
+      "age_pearson_r": 0.7379923024326774,
+      "by_perceived_race": {
+        "East Asian": {
+          "n": 1054,
+          "gender_accuracy": 0.9364326375711575,
+          "age_mae": 6.074557304382324,
+          "ita_mae": 8.030234336853027
+        },
+        "Indian": {
+          "n": 1057,
+          "gender_accuracy": 0.9574266792809839,
+          "age_mae": 6.231964111328125,
+          "ita_mae": 6.865538597106934
+        },
+        "Black": {
+          "n": 941,
+          "gender_accuracy": 0.8990435706695006,
+          "age_mae": 6.6766510009765625,
+          "ita_mae": 7.1860857009887695
+        },
+        "White": {
+          "n": 1522,
+          "gender_accuracy": 0.954664914586071,
+          "age_mae": 6.244551181793213,
+          "ita_mae": 8.159698486328125
+        },
+        "Middle Eastern": {
+          "n": 908,
+          "gender_accuracy": 0.9647577092511013,
+          "age_mae": 6.1332221031188965,
+          "ita_mae": 7.7505011558532715
+        },
+        "Latino_Hispanic": {
+          "n": 1160,
+          "gender_accuracy": 0.9603448275862069,
+          "age_mae": 6.346357345581055,
+          "ita_mae": 7.4245452880859375
+        },
+        "Southeast Asian": {
+          "n": 904,
+          "gender_accuracy": 0.9347345132743363,
+          "age_mae": 6.315747261047363,
+          "ita_mae": 7.152914047241211
+        }
+      },
+      "by_gender": {
+        "Male": {
+          "n": 3985,
+          "gender_accuracy": 0.9510664993726474,
+          "age_mae": 6.340831756591797,
+          "ita_mae": 8.494171142578125
+        },
+        "Female": {
+          "n": 3561,
+          "gender_accuracy": 0.9387812412243752,
+          "age_mae": 6.219788074493408,
+          "ita_mae": 6.506261348724365
+        }
+      },
+      "epoch": 3,
+      "train_loss": 0.37101644853153964
+    },
+    {
+      "n": 7546,
+      "gender_accuracy": 0.948051948051948,
+      "gender_mean_confidence": 0.939287006855011,
+      "age_mae": 6.056863784790039,
+      "age_bias": 0.5739948749542236,
+      "ita_mae": 6.4652605056762695,
+      "ita_bias": 0.8188419342041016,
+      "ita_pearson_r": 0.966539132761918,
+      "age_pearson_r": 0.7581823611999963,
+      "by_perceived_race": {
+        "East Asian": {
+          "n": 1054,
+          "gender_accuracy": 0.9430740037950665,
+          "age_mae": 5.751450061798096,
+          "ita_mae": 7.2830095291137695
+        },
+        "Indian": {
+          "n": 1057,
+          "gender_accuracy": 0.9640491958372753,
+          "age_mae": 6.1172871589660645,
+          "ita_mae": 5.799300670623779
+        },
+        "Black": {
+          "n": 941,
+          "gender_accuracy": 0.9075451647183846,
+          "age_mae": 6.759751319885254,
+          "ita_mae": 6.974302291870117
+        },
+        "White": {
+          "n": 1522,
+          "gender_accuracy": 0.9467805519053877,
+          "age_mae": 6.028112888336182,
+          "ita_mae": 6.8706278800964355
+        },
+        "Middle Eastern": {
+          "n": 908,
+          "gender_accuracy": 0.974669603524229,
+          "age_mae": 5.648495674133301,
+          "ita_mae": 6.033245086669922
+        },
+        "Latino_Hispanic": {
+          "n": 1160,
+          "gender_accuracy": 0.9612068965517241,
+          "age_mae": 6.087775230407715,
+          "ita_mae": 6.094557285308838
+        },
+        "Southeast Asian": {
+          "n": 904,
+          "gender_accuracy": 0.9358407079646017,
+          "age_mae": 6.029563903808594,
+          "ita_mae": 5.987736701965332
+        }
+      },
+      "by_gender": {
+        "Male": {
+          "n": 3985,
+          "gender_accuracy": 0.9616060225846926,
+          "age_mae": 6.165507793426514,
+          "ita_mae": 6.5186967849731445
+        },
+        "Female": {
+          "n": 3561,
+          "gender_accuracy": 0.9328840213423196,
+          "age_mae": 5.935283660888672,
+          "ita_mae": 6.405461311340332
+        }
+      },
+      "epoch": 4,
+      "train_loss": 0.33654410382452954
+    },
+    {
+      "n": 7546,
+      "gender_accuracy": 0.9553405777895574,
+      "gender_mean_confidence": 0.9458376169204712,
+      "age_mae": 6.17171573638916,
+      "age_bias": -1.1119498014450073,
+      "ita_mae": 5.911618709564209,
+      "ita_bias": -0.4231322407722473,
+      "ita_pearson_r": 0.9688655214972519,
+      "age_pearson_r": 0.7503987515633467,
+      "by_perceived_race": {
+        "East Asian": {
+          "n": 1054,
+          "gender_accuracy": 0.9487666034155597,
+          "age_mae": 5.927219390869141,
+          "ita_mae": 6.889955997467041
+        },
+        "Indian": {
+          "n": 1057,
+          "gender_accuracy": 0.9631031220435194,
+          "age_mae": 6.1382646560668945,
+          "ita_mae": 4.908025741577148
+        },
+        "Black": {
+          "n": 941,
+          "gender_accuracy": 0.9181721572794899,
+          "age_mae": 6.65528678894043,
+          "ita_mae": 5.696506500244141
+        },
+        "White": {
+          "n": 1522,
+          "gender_accuracy": 0.9559789750328516,
+          "age_mae": 6.115936279296875,
+          "ita_mae": 6.58889102935791
+        },
+        "Middle Eastern": {
+          "n": 908,
+          "gender_accuracy": 0.9779735682819384,
+          "age_mae": 6.151088714599609,
+          "ita_mae": 5.4878153800964355
+        },
+        "Latino_Hispanic": {
+          "n": 1160,
+          "gender_accuracy": 0.968103448275862,
+          "age_mae": 6.197824478149414,
+          "ita_mae": 5.5674028396606445
+        },
+        "Southeast Asian": {
+          "n": 904,
+          "gender_accuracy": 0.952433628318584,
+          "age_mae": 6.073657989501953,
+          "ita_mae": 5.89540958404541
+        }
+      },
+      "by_gender": {
+        "Male": {
+          "n": 3985,
+          "gender_accuracy": 0.9580928481806775,
+          "age_mae": 6.16514778137207,
+          "ita_mae": 5.967724800109863
+        },
+        "Female": {
+          "n": 3561,
+          "gender_accuracy": 0.9522606009547879,
+          "age_mae": 6.179064750671387,
+          "ita_mae": 5.848832607269287
+        }
+      },
+      "epoch": 5,
+      "train_loss": 0.3150630295276642
+    },
+    {
+      "n": 7546,
+      "gender_accuracy": 0.954280413464087,
+      "gender_mean_confidence": 0.9476966857910156,
+      "age_mae": 5.912805557250977,
+      "age_bias": -0.1305195391178131,
+      "ita_mae": 6.658565998077393,
+      "ita_bias": 3.6008079051971436,
+      "ita_pearson_r": 0.9698885494739257,
+      "age_pearson_r": 0.7686162972480156,
+      "by_perceived_race": {
+        "East Asian": {
+          "n": 1054,
+          "gender_accuracy": 0.9440227703984819,
+          "age_mae": 5.62542724609375,
+          "ita_mae": 7.385860919952393
+        },
+        "Indian": {
+          "n": 1057,
+          "gender_accuracy": 0.9706717123935666,
+          "age_mae": 6.059376239776611,
+          "ita_mae": 5.857769966125488
+        },
+        "Black": {
+          "n": 941,
+          "gender_accuracy": 0.9075451647183846,
+          "age_mae": 6.373682498931885,
+          "ita_mae": 6.223383903503418
+        },
+        "White": {
+          "n": 1522,
+          "gender_accuracy": 0.9586070959264126,
+          "age_mae": 5.861058235168457,
+          "ita_mae": 7.046769618988037
+        },
+        "Middle Eastern": {
+          "n": 908,
+          "gender_accuracy": 0.973568281938326,
+          "age_mae": 5.606833457946777,
+          "ita_mae": 6.673372268676758
+        },
+        "Latino_Hispanic": {
+          "n": 1160,
+          "gender_accuracy": 0.9698275862068966,
+          "age_mae": 6.016093730926514,
+          "ita_mae": 6.607370376586914
+        },
+        "Southeast Asian": {
+          "n": 904,
+          "gender_accuracy": 0.9491150442477876,
+          "age_mae": 5.858658790588379,
+          "ita_mae": 6.5971503257751465
+        }
+      },
+      "by_gender": {
+        "Male": {
+          "n": 3985,
+          "gender_accuracy": 0.9485570890840652,
+          "age_mae": 5.9863715171813965,
+          "ita_mae": 7.175402641296387
+        },
+        "Female": {
+          "n": 3561,
+          "gender_accuracy": 0.9606852007862959,
+          "age_mae": 5.830479145050049,
+          "ita_mae": 6.080191612243652
+        }
+      },
+      "epoch": 6,
+      "train_loss": 0.29374948300645076
+    },
+    {
+      "n": 7546,
+      "gender_accuracy": 0.9552080572488736,
+      "gender_mean_confidence": 0.952838122844696,
+      "age_mae": 5.909968376159668,
+      "age_bias": -0.2535350024700165,
+      "ita_mae": 5.496703624725342,
+      "ita_bias": 0.21640171110630035,
+      "ita_pearson_r": 0.972005517898247,
+      "age_pearson_r": 0.7716325509532042,
+      "by_perceived_race": {
+        "East Asian": {
+          "n": 1054,
+          "gender_accuracy": 0.9440227703984819,
+          "age_mae": 5.691768646240234,
+          "ita_mae": 6.490681171417236
+        },
+        "Indian": {
+          "n": 1057,
+          "gender_accuracy": 0.9706717123935666,
+          "age_mae": 6.092012882232666,
+          "ita_mae": 4.715620040893555
+        },
+        "Black": {
+          "n": 941,
+          "gender_accuracy": 0.9171094580233794,
+          "age_mae": 6.385500907897949,
+          "ita_mae": 5.62271785736084
+        },
+        "White": {
+          "n": 1522,
+          "gender_accuracy": 0.9625492772667543,
+          "age_mae": 5.73230504989624,
+          "ita_mae": 5.889798164367676
+        },
+        "Middle Eastern": {
+          "n": 908,
+          "gender_accuracy": 0.973568281938326,
+          "age_mae": 5.602541446685791,
+          "ita_mae": 4.987818717956543
+        },
+        "Latino_Hispanic": {
+          "n": 1160,
+          "gender_accuracy": 0.9706896551724138,
+          "age_mae": 5.9982171058654785,
+          "ita_mae": 5.253323554992676
+        },
+        "Southeast Asian": {
+          "n": 904,
+          "gender_accuracy": 0.9391592920353983,
+          "age_mae": 5.9511871337890625,
+          "ita_mae": 5.281513690948486
+        }
+      },
+      "by_gender": {
+        "Male": {
+          "n": 3985,
+          "gender_accuracy": 0.942534504391468,
+          "age_mae": 5.968104362487793,
+          "ita_mae": 5.581408977508545
+        },
+        "Female": {
+          "n": 3561,
+          "gender_accuracy": 0.9693906206121876,
+          "age_mae": 5.84490966796875,
+          "ita_mae": 5.401911735534668
+        }
+      },
+      "epoch": 7,
+      "train_loss": 0.27218318938441544
+    },
+    {
+      "n": 7546,
+      "gender_accuracy": 0.9571958653591307,
+      "gender_mean_confidence": 0.9566711187362671,
+      "age_mae": 5.7945990562438965,
+      "age_bias": 0.042047541588544846,
+      "ita_mae": 5.287416458129883,
+      "ita_bias": 0.8789642453193665,
+      "ita_pearson_r": 0.9734879780086774,
+      "age_pearson_r": 0.7835328687026054,
+      "by_perceived_race": {
+        "East Asian": {
+          "n": 1054,
+          "gender_accuracy": 0.9411764705882353,
+          "age_mae": 5.565847873687744,
+          "ita_mae": 6.018379211425781
+        },
+        "Indian": {
+          "n": 1057,
+          "gender_accuracy": 0.9763481551561022,
+          "age_mae": 5.920890808105469,
+          "ita_mae": 4.758423805236816
+        },
+        "Black": {
+          "n": 941,
+          "gender_accuracy": 0.9128586609989373,
+          "age_mae": 6.183372497558594,
+          "ita_mae": 5.549964427947998
+        },
+        "White": {
+          "n": 1522,
+          "gender_accuracy": 0.9586070959264126,
+          "age_mae": 5.887632369995117,
+          "ita_mae": 5.704077243804932
+        },
+        "Middle Eastern": {
+          "n": 908,
+          "gender_accuracy": 0.9790748898678414,
+          "age_mae": 5.594071388244629,
+          "ita_mae": 4.770666599273682
+        },
+        "Latino_Hispanic": {
+          "n": 1160,
+          "gender_accuracy": 0.9732758620689655,
+          "age_mae": 5.683369159698486,
+          "ita_mae": 4.9063944816589355
+        },
+        "Southeast Asian": {
+          "n": 904,
+          "gender_accuracy": 0.9546460176991151,
+          "age_mae": 5.6964592933654785,
+          "ita_mae": 5.086848258972168
+        }
+      },
+      "by_gender": {
+        "Male": {
+          "n": 3985,
+          "gender_accuracy": 0.9580928481806775,
+          "age_mae": 5.818737983703613,
+          "ita_mae": 5.393751621246338
+        },
+        "Female": {
+          "n": 3561,
+          "gender_accuracy": 0.9561920808761584,
+          "age_mae": 5.767585277557373,
+          "ita_mae": 5.168419361114502
+        }
+      },
+      "epoch": 8,
+      "train_loss": 0.25450174833444056
+    },
+    {
+      "n": 7546,
+      "gender_accuracy": 0.960376358335542,
+      "gender_mean_confidence": 0.9593976736068726,
+      "age_mae": 5.753261566162109,
+      "age_bias": -0.19486936926841736,
+      "ita_mae": 5.414279937744141,
+      "ita_bias": -0.01451413705945015,
+      "ita_pearson_r": 0.9728008062157985,
+      "age_pearson_r": 0.7802247795280034,
+      "by_perceived_race": {
+        "East Asian": {
+          "n": 1054,
+          "gender_accuracy": 0.9487666034155597,
+          "age_mae": 5.610864162445068,
+          "ita_mae": 6.342777252197266
+        },
+        "Indian": {
+          "n": 1057,
+          "gender_accuracy": 0.9772942289498581,
+          "age_mae": 5.838788032531738,
+          "ita_mae": 4.765015125274658
+        },
+        "Black": {
+          "n": 941,
+          "gender_accuracy": 0.9202975557917109,
+          "age_mae": 6.273944854736328,
+          "ita_mae": 5.564933776855469
+        },
+        "White": {
+          "n": 1522,
+          "gender_accuracy": 0.9658344283837057,
+          "age_mae": 5.690989017486572,
+          "ita_mae": 5.868894100189209
+        },
+        "Middle Eastern": {
+          "n": 908,
+          "gender_accuracy": 0.9779735682819384,
+          "age_mae": 5.429816722869873,
+          "ita_mae": 4.9260053634643555
+        },
+        "Latino_Hispanic": {
+          "n": 1160,
+          "gender_accuracy": 0.9724137931034482,
+          "age_mae": 5.795966148376465,
+          "ita_mae": 4.94840669631958
+        },
+        "Southeast Asian": {
+          "n": 904,
+          "gender_accuracy": 0.9535398230088495,
+          "age_mae": 5.652214050292969,
+          "ita_mae": 5.2568864822387695
+        }
+      },
+      "by_gender": {
+        "Male": {
+          "n": 3985,
+          "gender_accuracy": 0.9510664993726474,
+          "age_mae": 5.843228340148926,
+          "ita_mae": 5.508393287658691
+        },
+        "Female": {
+          "n": 3561,
+          "gender_accuracy": 0.9707947205841055,
+          "age_mae": 5.652583122253418,
+          "ita_mae": 5.308961391448975
+        }
+      },
+      "epoch": 9,
+      "train_loss": 0.23748634861134665
+    },
+    {
+      "n": 7546,
+      "gender_accuracy": 0.9590511529287039,
+      "gender_mean_confidence": 0.9599629044532776,
+      "age_mae": 5.8921799659729,
+      "age_bias": 0.5154089331626892,
+      "ita_mae": 5.144338607788086,
+      "ita_bias": 0.2064763456583023,
+      "ita_pearson_r": 0.9740596705016119,
+      "age_pearson_r": 0.7783092188556963,
+      "by_perceived_race": {
+        "East Asian": {
+          "n": 1054,
+          "gender_accuracy": 0.9459203036053131,
+          "age_mae": 5.767291069030762,
+          "ita_mae": 5.896517276763916
+        },
+        "Indian": {
+          "n": 1057,
+          "gender_accuracy": 0.9744560075685903,
+          "age_mae": 6.0218377113342285,
+          "ita_mae": 4.483973979949951
+        },
+        "Black": {
+          "n": 941,
+          "gender_accuracy": 0.9171094580233794,
+          "age_mae": 6.4156389236450195,
+          "ita_mae": 5.287872314453125
+        },
+        "White": {
+          "n": 1522,
+          "gender_accuracy": 0.9645203679369251,
+          "age_mae": 5.775359630584717,
+          "ita_mae": 5.6290717124938965
+        },
+        "Middle Eastern": {
+          "n": 908,
+          "gender_accuracy": 0.9757709251101322,
+          "age_mae": 5.67126989364624,
+          "ita_mae": 4.729753494262695
+        },
+        "Latino_Hispanic": {
+          "n": 1160,
+          "gender_accuracy": 0.9741379310344828,
+          "age_mae": 5.893811225891113,
+          "ita_mae": 4.7392578125
+        },
+        "Southeast Asian": {
+          "n": 904,
+          "gender_accuracy": 0.9546460176991151,
+          "age_mae": 5.757785797119141,
+          "ita_mae": 5.010177135467529
+        }
+      },
+      "by_gender": {
+        "Male": {
+          "n": 3985,
+          "gender_accuracy": 0.9631116687578419,
+          "age_mae": 5.972553253173828,
+          "ita_mae": 5.284796237945557
+        },
+        "Female": {
+          "n": 3561,
+          "gender_accuracy": 0.9545071609098568,
+          "age_mae": 5.802237033843994,
+          "ita_mae": 4.987157344818115
+        }
+      },
+      "epoch": 10,
+      "train_loss": 0.22574965099408392
+    },
+    {
+      "n": 7546,
+      "gender_accuracy": 0.960376358335542,
+      "gender_mean_confidence": 0.9602339863777161,
+      "age_mae": 5.743075370788574,
+      "age_bias": -0.30349746346473694,
+      "ita_mae": 5.082616806030273,
+      "ita_bias": 0.4890250563621521,
+      "ita_pearson_r": 0.9741843970517604,
+      "age_pearson_r": 0.7828860055054515,
+      "by_perceived_race": {
+        "East Asian": {
+          "n": 1054,
+          "gender_accuracy": 0.9497153700189753,
+          "age_mae": 5.671995639801025,
+          "ita_mae": 5.873579502105713
+        },
+        "Indian": {
+          "n": 1057,
+          "gender_accuracy": 0.9801324503311258,
+          "age_mae": 5.894190311431885,
+          "ita_mae": 4.403705596923828
+        },
+        "Black": {
+          "n": 941,
+          "gender_accuracy": 0.9171094580233794,
+          "age_mae": 6.324131011962891,
+          "ita_mae": 5.2051825523376465
+        },
+        "White": {
+          "n": 1522,
+          "gender_accuracy": 0.9632063074901446,
+          "age_mae": 5.623737335205078,
+          "ita_mae": 5.546106338500977
+        },
+        "Middle Eastern": {
+          "n": 908,
+          "gender_accuracy": 0.9801762114537445,
+          "age_mae": 5.462164878845215,
+          "ita_mae": 4.662187576293945
+        },
+        "Latino_Hispanic": {
+          "n": 1160,
+          "gender_accuracy": 0.9741379310344828,
+          "age_mae": 5.759885787963867,
+          "ita_mae": 4.6884074211120605
+        },
+        "Southeast Asian": {
+          "n": 904,
+          "gender_accuracy": 0.952433628318584,
+          "age_mae": 5.505923271179199,
+          "ita_mae": 4.9744367599487305
+        }
+      },
+      "by_gender": {
+        "Male": {
+          "n": 3985,
+          "gender_accuracy": 0.9588456712672522,
+          "age_mae": 5.84173059463501,
+          "ita_mae": 5.266350746154785
+        },
+        "Female": {
+          "n": 3561,
+          "gender_accuracy": 0.962089300758214,
+          "age_mae": 5.632673263549805,
+          "ita_mae": 4.877006530761719
+        }
+      },
+      "epoch": 11,
+      "train_loss": 0.21682764321181908
+    },
+    {
+      "n": 7546,
+      "gender_accuracy": 0.9591836734693877,
+      "gender_mean_confidence": 0.9600023627281189,
+      "age_mae": 5.8408966064453125,
+      "age_bias": 0.3265281617641449,
+      "ita_mae": 5.185732364654541,
+      "ita_bias": -0.569660484790802,
+      "ita_pearson_r": 0.9741490426457623,
+      "age_pearson_r": 0.7795565423884669,
+      "by_perceived_race": {
+        "East Asian": {
+          "n": 1054,
+          "gender_accuracy": 0.9468690702087287,
+          "age_mae": 5.8618035316467285,
+          "ita_mae": 6.003030776977539
+        },
+        "Indian": {
+          "n": 1057,
+          "gender_accuracy": 0.97918637653737,
+          "age_mae": 5.72812032699585,
+          "ita_mae": 4.513497352600098
+        },
+        "Black": {
+          "n": 941,
+          "gender_accuracy": 0.9139213602550478,
+          "age_mae": 6.38438081741333,
+          "ita_mae": 5.291260719299316
+        },
+        "White": {
+          "n": 1522,
+          "gender_accuracy": 0.9625492772667543,
+          "age_mae": 5.784121990203857,
+          "ita_mae": 5.674161911010742
+        },
+        "Middle Eastern": {
+          "n": 908,
+          "gender_accuracy": 0.9790748898678414,
+          "age_mae": 5.552706241607666,
+          "ita_mae": 4.756343841552734
+        },
+        "Latino_Hispanic": {
+          "n": 1160,
+          "gender_accuracy": 0.975,
+          "age_mae": 5.827215194702148,
+          "ita_mae": 4.7973856925964355
+        },
+        "Southeast Asian": {
+          "n": 904,
+          "gender_accuracy": 0.9513274336283186,
+          "age_mae": 5.7852654457092285,
+          "ita_mae": 5.016258716583252
+        }
+      },
+      "by_gender": {
+        "Male": {
+          "n": 3985,
+          "gender_accuracy": 0.9558343789209536,
+          "age_mae": 5.90401029586792,
+          "ita_mae": 5.348109245300293
+        },
+        "Female": {
+          "n": 3561,
+          "gender_accuracy": 0.9629317607413648,
+          "age_mae": 5.770267963409424,
+          "ita_mae": 5.004022121429443
+        }
+      },
+      "epoch": 12,
+      "train_loss": 0.2124281303053762
+    }
+  ],
+  "wall_clock_minutes": 55.6,
+  "config_hash": "893b13d445cb9f2f",
+  "interpretation": "Une MAE d'âge de X ans mesurée sur des images générées doit être comparée à 5.74 ans, l'erreur de l'oracle sur des visages réels. L'écart imputable au générateur est ce qui dépasse cette valeur. Même raisonnement pour l'ITA et la précision de genre."
+}
