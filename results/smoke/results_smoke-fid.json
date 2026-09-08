@@ -1,0 +1,321 @@
+{
+  "schema_version": "1.0",
+  "label": "smoke-fid",
+  "created": "2026-08-17T22:22:36",
+  "quick_mode": false,
+  "checkpoint": {
+    "path": "runs/smoke/ckpt_final.pt",
+    "sha256": "cae185a1c986b4855dd4388faf9f82a998ef75b89321c0967ccabd3567679107",
+    "step": 3000,
+    "params_millions": 4.29
+  },
+  "config_hash": "97fe8386944a42db",
+  "config": {
+    "name": "smoke",
+    "seed": 1234,
+    "device": "cuda",
+    "data": {
+      "root": "data/fairface",
+      "hf_dataset": "HuggingFaceM4/FairFace",
+      "hf_config": "0.25",
+      "age_min": 18.0,
+      "age_max": 70.0,
+      "drop_partial_age_bins": true,
+      "image_size": 32,
+      "latent_size": 4,
+      "hflip": true,
+      "vae_id": "stabilityai/sd-vae-ft-mse",
+      "vae_scale": 0.18215,
+      "cache_dir": "artifacts",
+      "latents_file": "latents.npy",
+      "labels_file": "labels.npy",
+      "age_bounds_file": "age_bounds.npy",
+      "meta_file": "dataset_meta.json",
+      "encode_batch_size": 128,
+      "num_workers": 4,
+      "ita_use_mediapipe": true,
+      "ita_min_pixels": 200
+    },
+    "model": {
+      "latent_size": 4,
+      "in_channels": 4,
+      "patch_size": 2,
+      "depth": 6,
+      "hidden_size": 192,
+      "num_heads": 4,
+      "mlp_ratio": 4.0,
+      "fourier_num_freqs": 64,
+      "fourier_max_freq": 64.0,
+      "dropout": 0.0,
+      "age_norm_max": 70.0,
+      "ita_norm_offset": 60.0,
+      "ita_norm_scale": 120.0
+    },
+    "train": {
+      "steps": 3000,
+      "batch_size": 128,
+      "lr": 0.0001,
+      "weight_decay": 0.0,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "grad_clip": 1.0,
+      "ema_decay": 0.9999,
+      "ema_start": 200,
+      "cond_dropout": 0.1,
+      "independent_cond_dropout": false,
+      "num_train_timesteps": 1000,
+      "beta_schedule": "squaredcos_cap_v2",
+      "prediction_type": "epsilon",
+      "precision": "bf16",
+      "fused_adam": true,
+      "ckpt_every": 1000,
+      "sample_every": 500,
+      "log_every": 50,
+      "keep_last_ckpts": 3,
+      "out_dir": "runs/smoke"
+    },
+    "sample": {
+      "num_steps": 25,
+      "eta": 0.0,
+      "guidance": 3.0,
+      "guidance_age": null,
+      "guidance_gender": null,
+      "guidance_ita": null,
+      "restore": false,
+      "restore_size": 512,
+      "codeformer_fidelity": 0.7
+    },
+    "eval": {
+      "fid_num_samples": 1500,
+      "attr_num_samples": 500,
+      "leakage_num_seeds": 20,
+      "diversity_num_pairs": 50,
+      "subgroup_samples_per_cell": 40,
+      "w_sweep": [
+        1.0,
+        3.0,
+        6.0
+      ],
+      "memorization_num_samples": 40,
+      "age_bins": [
+        20.0,
+        33.0,
+        46.0,
+        58.0,
+        70.0
+      ],
+      "ita_bins": [
+        -40.0,
+        10.0,
+        28.0,
+        45.0,
+        70.0
+      ],
+      "real_stats_dir": "artifacts/fid_ref",
+      "oracle_ckpt": "runs/oracle_smoke/oracle_best.pt",
+      "batch_size": 64,
+      "out_dir": "results/smoke"
+    },
+    "oracle": {
+      "image_size": 128,
+      "backbone": "resnet18",
+      "pretrained": true,
+      "epochs": 12,
+      "batch_size": 128,
+      "lr": 0.0003,
+      "weight_decay": 0.0001,
+      "label_smoothing": 0.05,
+      "age_loss_weight": 1.0,
+      "ita_loss_weight": 1.0,
+      "gender_loss_weight": 1.0,
+      "huber_delta": 5.0,
+      "num_workers": 4,
+      "out_dir": "runs/oracle",
+      "age_mean": 40.0,
+      "age_std": 15.0,
+      "ita_mean": 25.0,
+      "ita_std": 25.0
+    }
+  },
+  "env": {
+    "python": "3.12.6",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "numpy": "1.26.4",
+    "git": null,
+    "torch": "2.6.0+cu126",
+    "cuda": "12.6",
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "diffusers": "0.32.2"
+  },
+  "sampling": {
+    "num_steps": 25,
+    "guidance": 3.0,
+    "eta": 0.0,
+    "restore": false
+  },
+  "oracle": {
+    "checkpoint": "runs/oracle_smoke/oracle_best.pt",
+    "metrics_on_real": {
+      "n": 1413,
+      "gender_accuracy": 0.9179051663128096,
+      "gender_mean_confidence": 0.908491313457489,
+      "age_mae": 7.217565536499023,
+      "age_bias": -0.38374245166778564,
+      "ita_mae": 8.895133972167969,
+      "ita_bias": -0.1568268984556198,
+      "ita_pearson_r": 0.949453484029889,
+      "age_pearson_r": 0.6523898941457009,
+      "by_perceived_race": {
+        "East Asian": {
+          "n": 204,
+          "gender_accuracy": 0.9215686274509803,
+          "age_mae": 7.328281879425049,
+          "ita_mae": 10.047558784484863
+        },
+        "Indian": {
+          "n": 182,
+          "gender_accuracy": 0.9175824175824175,
+          "age_mae": 7.331833362579346,
+          "ita_mae": 7.88932991027832
+        },
+        "Black": {
+          "n": 190,
+          "gender_accuracy": 0.8736842105263158,
+          "age_mae": 7.387635707855225,
+          "ita_mae": 7.970464706420898
+        },
+        "White": {
+          "n": 280,
+          "gender_accuracy": 0.8928571428571429,
+          "age_mae": 7.407641410827637,
+          "ita_mae": 9.861769676208496
+        },
+        "Middle Eastern": {
+          "n": 172,
+          "gender_accuracy": 0.9709302325581395,
+          "age_mae": 7.258272171020508,
+          "ita_mae": 8.6756591796875
+        },
+        "Latino_Hispanic": {
+          "n": 215,
+          "gender_accuracy": 0.9534883720930233,
+          "age_mae": 6.437929153442383,
+          "ita_mae": 8.109772682189941
+        },
+        "Southeast Asian": {
+          "n": 170,
+          "gender_accuracy": 0.9058823529411765,
+          "age_mae": 7.404051303863525,
+          "ita_mae": 9.245687484741211
+        }
+      },
+      "by_gender": {
+        "Male": {
+          "n": 751,
+          "gender_accuracy": 0.9241011984021305,
+          "age_mae": 7.395895481109619,
+          "ita_mae": 9.030157089233398
+        },
+        "Female": {
+          "n": 662,
+          "gender_accuracy": 0.9108761329305136,
+          "age_mae": 7.015260696411133,
+          "ita_mae": 8.741960525512695
+        }
+      },
+      "epoch": 4,
+      "train_loss": 0.33220198473265006
+    },
+    "role": "F-O4 — barre d'erreur des mesures d'attributs"
+  },
+  "fid": {
+    "fid": 114.94142364098121,
+    "n_generated": 1500,
+    "n_reference": 1500,
+    "reference_split": "val",
+    "implementation": "clean-fid, mode=clean",
+    "note": "Calculé sur les images 128×128 brutes, AVANT restauration (F-S5) : un restaurateur entraîné sur des visages réels ferait baisser le FID sans que le générateur y soit pour rien.",
+    "fd_dinov2": 1181.1684925067034
+  },
+  "memorization": {
+    "n_generated": 40,
+    "n_reference": 14824,
+    "lpips_nn_mean": 0.07161499308422208,
+    "lpips_nn_min": 0.033111996948719025,
+    "lpips_nn_p01": 0.03730899479240179,
+    "n_below_0.15": 40,
+    "fraction_below_0.15": 1.0,
+    "closest_train_indices": [
+      5290,
+      2045,
+      7129,
+      4619,
+      10874,
+      9745,
+      13059,
+      9801,
+      11010,
+      3410,
+      2565,
+      13553,
+      7555,
+      12964,
+      14762,
+      8662,
+      5455,
+      14360,
+      4460,
+      4221,
+      6966,
+      11880,
+      3559,
+      5322,
+      13860,
+      11958,
+      5450,
+      8038,
+      3107,
+      4082,
+      379,
+      7555
+    ],
+    "verdict": "40 image(s) sous le seuil de 0.15 — à inspecter visuellement et à signaler dans la section éthique (E-3)"
+  },
+  "timings_seconds": {
+    "fid": 655.6,
+    "memorization": 3.4
+  },
+  "targets": {
+    "reference": "§8.1 — cibles indicatives pour un modèle de 12M paramètres, PAS des promesses. Un écart est un résultat à analyser.",
+    "fid": {
+      "metric": "FID",
+      "value": 114.9414,
+      "target": 30.0,
+      "fail_threshold": 60.0,
+      "status": "échec"
+    },
+    "gender_accuracy": {
+      "metric": "Précision genre",
+      "value": null,
+      "status": "non mesuré"
+    },
+    "age_mae": {
+      "metric": "MAE âge",
+      "value": null,
+      "status": "non mesuré"
+    },
+    "ita_delta_mean": {
+      "metric": "ΔITA",
+      "value": null,
+      "status": "non mesuré"
+    },
+    "lpips_mean": {
+      "metric": "LPIPS intra-condition",
+      "value": null,
+      "status": "non mesuré"
+    }
+  },
+  "figures": []
+}

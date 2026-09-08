@@ -1,0 +1,17 @@
+{
+  "v2": {
+    "ref_non_alignee": 22.275643141254136,
+    "ref_alignee": 26.140200413883974
+  },
+  "v4": {
+    "ref_non_alignee": 27.179812831386556,
+    "ref_alignee": 23.639311561125567
+  },
+  "protocole": {
+    "n_generees": 5000,
+    "n_reference": 5000,
+    "guidance": 2.0,
+    "num_steps": 25,
+    "note": "Les deux références portent sur les MÊMES visages, l'une redimensionnée, l'autre alignée. Effectifs identiques pour éviter le biais de taille."
+  }
+}

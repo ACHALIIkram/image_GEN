@@ -1,0 +1,121 @@
+{
+  "config": "final",
+  "config_hash": "31384edbaaf734cf",
+  "device": "cuda",
+  "env": {
+    "python": "3.12.6",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "numpy": "1.26.4",
+    "git": null,
+    "torch": "2.6.0+cu126",
+    "cuda": "12.6",
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "diffusers": "0.32.2"
+  },
+  "reference": "§5 — exigences non fonctionnelles",
+  "inference": {
+    "detail": {
+      "batch_1": {
+        "total_seconds_median": 0.24373845000081928,
+        "seconds_per_image": 0.24373845000081928,
+        "p95_seconds": 0.2787285350010279
+      },
+      "batch_8": {
+        "total_seconds_median": 0.3087613499992585,
+        "seconds_per_image": 0.038595168749907316,
+        "p95_seconds": 0.31554710999898816
+      },
+      "num_steps": 25,
+      "params_millions": 9.95,
+      "peak_vram_warmup_gb": 0.489,
+      "peak_vram_steady_gb": 0.489,
+      "cudnn_benchmark": false
+    },
+    "NF-1": {
+      "value": 0.244,
+      "threshold": 3.0,
+      "unit": "s",
+      "status": "conforme"
+    },
+    "NF-3": {
+      "value": 0.489,
+      "threshold": 4.0,
+      "unit": "Go",
+      "status": "conforme"
+    }
+  },
+  "training": {
+    "detail": {
+      "batch_size": 128,
+      "precision": "bf16",
+      "steps_measured": 50,
+      "steps_per_second": 23.34,
+      "images_per_second": 2987.5,
+      "planned_steps": 60000
+    },
+    "NF-2": {
+      "value": 1.051,
+      "threshold": 6.0,
+      "unit": "Go",
+      "status": "conforme"
+    },
+    "NF-4": {
+      "value": 0.714,
+      "threshold": 8.0,
+      "unit": "h",
+      "status": "conforme"
+    },
+    "note": "NF-4 est extrapolée du débit mesuré ici, et remplace l'estimation « 3 à 5 h » du §7.3 que le PRD demande de ne pas reprendre telle quelle. Le débit réel de l'entraînement complet est journalisé dans runs/*/train_summary.json."
+  },
+  "cache": {
+    "detail": {
+      "path": "artifacts\\train_128_latents.npy",
+      "shape": [
+        119410,
+        4,
+        16,
+        16
+      ],
+      "dtype": "float16",
+      "n_latents": 119410
+    },
+    "NF-5": {
+      "value": 0.245,
+      "threshold": 1.0,
+      "unit": "Go",
+      "status": "conforme"
+    }
+  },
+  "verdicts": {
+    "NF-1": {
+      "value": 0.244,
+      "threshold": 3.0,
+      "unit": "s",
+      "status": "conforme"
+    },
+    "NF-2": {
+      "value": 1.051,
+      "threshold": 6.0,
+      "unit": "Go",
+      "status": "conforme"
+    },
+    "NF-3": {
+      "value": 0.489,
+      "threshold": 4.0,
+      "unit": "Go",
+      "status": "conforme"
+    },
+    "NF-4": {
+      "value": 0.714,
+      "threshold": 8.0,
+      "unit": "h",
+      "status": "conforme"
+    },
+    "NF-5": {
+      "value": 0.245,
+      "threshold": 1.0,
+      "unit": "Go",
+      "status": "conforme"
+    }
+  }
+}

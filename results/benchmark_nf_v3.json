@@ -1,0 +1,14 @@
+{
+  "batch_1": {
+    "total_median_s": 0.767161500029033,
+    "per_image_s": 0.767161500029033
+  },
+  "batch_8": {
+    "total_median_s": 1.3290562500187661,
+    "per_image_s": 0.16613203125234577
+  },
+  "peak_vram_gb": 0.589,
+  "params_millions": 32.96,
+  "num_steps": 25,
+  "model": "runs/final_v3/ckpt_final.pt"
+}
